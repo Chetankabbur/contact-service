@@ -1,11 +1,12 @@
 # contact-service
-Spring Boot "Microservice" Example Project
+Spring Boot "Contact-service"  Project
 
-This is a sample Java / Maven / Spring Boot (version 1.5.6) application that can be used as a starter for creating a microservice complete with built-in health check, metrics and much more. I hope it helps you.
+## Overview
+The Contact Service Application is a Spring Boot-based RESTful web service designed to process and consolidate contact information (email and phone number) across multiple purchases. This service ensures that all contact details are linked appropriately, maintaining a primary contact and linking secondary contacts as necessary.
 
 ## How to Run
 
-This application is packaged as a war which has Tomcat 8 embedded. No Tomcat or JBoss installation is necessary. You run it using the ```java -jar``` command.
+This application is packaged as a jar which has Tomcat 8 embedded. No Tomcat or JBoss installation is necessary. You run it using the ```java -jar``` command.
 
 * Clone this repository
 * Make sure you are using latest JDK and Maven 3.x
@@ -24,21 +25,17 @@ This application is packaged as a war which has Tomcat 8 embedded. No Tomcat or 
 
 ## About the Service
 
-The service is just a simple hotel review REST service. It uses an in-memory database (H2) to store the data. You can also do with a relational database like MySQL or PostgreSQL. If your database connection properties work, you can call some REST endpoints defined in ```com.khoubyari.example.api.rest.hotelController``` on **port 8090**. (see below)
-
+The service is just a simple identity review REST service. It uses an mysql database to store the data. You can also do with a relational database like PostgreSQL. If your database connection properties work, you can call some REST endpoints defined in ```com.example.contactservice.controller;``` on **port 8080**. (see below)
 
 You can use this sample service to understand the conventions and configurations that allow you to create a DB-backed RESTful service. Once you understand and get comfortable with the sample app you can add your own services following the same patterns as the sample service.
 
 Here is what this little application demonstrates:
 
 * Full integration with the latest **Spring** Framework: inversion of control, dependency injection, etc.
-* Packaging as a single war with embedded container (tomcat 8): No need to install a container separately on the host just run using the ``java -jar`` command
-* Demonstrates how to set up healthcheck, metrics, info, environment, etc. endpoints automatically on a configured port. Inject your own health / metrics info with a few lines of code.
-* Writing a RESTful service using annotation: supports both XML and JSON request / response; simply use desired ``Accept`` header in your request
+* Packaging as a single war with embedded container (tomcat 8): No need to install a container separately on the host just run using the ``java -jar`` command.
+* Writing a RESTful service using annotation: supports both JSON request / response; simply use desired ``Accept`` header in your request
 * Exception mapping from application exceptions to the right HTTP response with exception details in the body
 * *Spring Data* Integration with JPA/Hibernate with just a few lines of configuration and familiar annotations.
 * Automatic CRUD functionality against the data source using Spring *Repository* pattern
 * Demonstrates MockMVC test framework with associated libraries
-* All APIs are "self-documented" by Swagger2 using annotations
 
-Here are some endpoints you can call:
