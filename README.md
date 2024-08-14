@@ -51,7 +51,7 @@ mvn clean install -DskipTests
 
 At the end of the execution, the **Maven** build output should look like this:
 
-![maven-build](./images/maven-build.png)
+![mvn_build](https://github.com/user-attachments/assets/e292b792-d1ec-4791-b698-a6d3da7ba556)
 
 Other **Bash** scripts are available within the project for convenience:
 - `build.sh`: to build the project.
