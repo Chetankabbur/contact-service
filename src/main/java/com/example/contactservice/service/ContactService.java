@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 /**
  * Contact service
@@ -107,4 +109,34 @@ public class ContactService {
                 .map(Contact::getId)
                 .collect(Collectors.toList());
     }
+
+    /**
+     * Find By Id Or Email Or PhoneNumber
+     * @param contactId the contactID
+     * @param email the email ID
+     * @param phoneNumber the phoneNumber
+     * @return the contactList
+     */
+    public List<Contact> findByIdOrEmailOrPhoneNumber(Long contactId, String email, String phoneNumber) {
+        List<Contact> existingContacts = List.of();
+        if(contactId!=null && !contactId.equals(0L)) {
+            Optional<Contact> contacts = contactRepository.findById(contactId);
+            existingContacts = contacts.map(Collections::singletonList).orElse(Collections.emptyList());
+        }else if (email!=null || phoneNumber!=null) {
+            existingContacts = contactRepository.findByEmailOrPhoneNumber(email, phoneNumber);
+        }else{
+            existingContacts = contactRepository.findAll();
+        }
+        return existingContacts;
+    }
+
+    /**
+     * Delete the contact
+     * @param contact
+     */
+    public void delete(Contact contact){
+        this.contactRepository.delete(contact);
+    }
+
+
 }
