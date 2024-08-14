@@ -1,4 +1,4 @@
-# contact-service
+![docker_build](https://github.com/user-attachments/assets/5512e15d-13cc-460c-9131-574da213a60e)# contact-service
 Spring Boot "Contact-service"  Project
 
 ## Overview
@@ -47,7 +47,7 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 Let's build the App to make sure it compiles as expected, the following command must be run from the project root folder:
 
 ```
-./mvnw clean install -DskipTests
+mvn clean install -DskipTests
 ```
 
 At the end of the execution, the **Maven** build output should look like this:
@@ -83,7 +83,7 @@ It's straightforward, the `Dockerfile` uses an image based on **Java 17**, it co
 
 By building your image with the command `docker build .`, a successful output should be similar to the next image:
 
-![docker_build.png](screenshot%2Fdocker_build.png)
+![docker_build](https://github.com/user-attachments/assets/e2b1550e-4dca-4454-9ee4-f8ae0bb7b6b5)
 
 By this stage, we have the App image and since we'll use an official MySQL Docker image, we can manually spin up both components and link them together by using the database credentials to run the App, but to make the process easier we'll link their deployments together by using **Docker Compose** in the next section.
 
@@ -91,7 +91,7 @@ By this stage, we have the App image and since we'll use an official MySQL Docke
 Docker Compose simplifies the orchestration of multi-container applications. Create a file named `docker-compose.yml` in your project directory and add the following configuration:
 
 ```yaml
-version: '3.7'
+version: '3.9'
 services:
   app:
     build:
@@ -109,7 +109,7 @@ services:
     networks:
       - springboot-mysql-network
   mysqldb:
-    image: mysql:8.0.33
+    image: mysql:8.0.33  #docker pull mysql:8.0.33
     ports:
       - 3306:3306
     environment:
@@ -168,20 +168,23 @@ docker-compose up
 Docker Compose will build the Spring Boot and MySQL images, create the containers, and start them. You'll see logs from both the application and the database. To stop the containers, press Ctrl+C.
 
 Using **Docker Desktop** enables you to view a nice summary of your Docker state in which we can see our running containers as illustrated below:
+![docker_build](https://github.com/user-attachments/assets/2d85aa5c-4f08-4df1-b44a-8714b7c0ef5f)
 
-![running-containers](./images/docker-desktop-running-containers.png)
+![docker_compose_up_1](https://github.com/user-attachments/assets/22b25936-803c-46af-a4c0-dfe810608f75)
 
-Open POSTMAN and **create** a POST request to the URL `localhost:8090/api/users` with a random user object to be persisted in the DB:
+![docker_compose_up_2](https://github.com/user-attachments/assets/0e4b3f93-da09-461e-9cc9-e21fe52a7e7c)
 
-![create-user](./images/test-api-create-user.png)
+![docker_desktop_dockerimage](https://github.com/user-attachments/assets/94bb4b94-768d-4105-ae01-f82aa0477bca)
 
-Let's **list all users** which includes the one we just created:
+![docker_running](https://github.com/user-attachments/assets/1f7ea023-b859-4bb7-b83c-fdc3eabec3e7)
 
-![list-users](./images/test-api-list-users.png)
+Open POSTMAN and **create** a POST request to the URL `[http://localhost:8090/v1/contact/identify]` with a random contact object to be persisted in the DB:
 
-A **ping** endpoint is also available:
+![create_API](https://github.com/user-attachments/assets/81f23465-0ce0-4f0c-a850-c43a1c1b24d7)
 
-![ping](./images/test-api-ping.png)
+Let's **list all contacts** which includes the one we just created:
+
+![get_API](https://github.com/user-attachments/assets/9cf8288e-50c6-4857-97f8-aa1d09fb5295)
 
 ———————
 
