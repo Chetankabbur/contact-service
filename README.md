@@ -1,4 +1,3 @@
-![docker_build](https://github.com/user-attachments/assets/5512e15d-13cc-460c-9131-574da213a60e)# contact-service
 Spring Boot "Contact-service"  Project
 
 ## Overview
