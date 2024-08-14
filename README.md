@@ -185,8 +185,7 @@ Let's **list all contacts** which includes the one we just created:
 
 ![get_API](https://github.com/user-attachments/assets/9cf8288e-50c6-4857-97f8-aa1d09fb5295)
 
-#Bringing Down Docker Containers
- bring down Docker containers, use docker-compose down for stopping and removing containers:
+ #bringing down Docker containers, use docker-compose down for stopping and removing containers:
  ```bash
  docker-compose down
 ```
